@@ -2,8 +2,6 @@
 
 Added --snapshot-ticks command-line argument to run_training.py to control how often snapshots are saved during command-line training.
 
-Modified snapshot file names in training/training_loop.py to sequential numbering instead of numbering by floor(kimg) processed.
-
 ## StyleGAN2 &mdash; Official TensorFlow Implementation (Modified by 96jonesa)
 
 ![Teaser image](./docs/stylegan2-teaser-1024x256.png)
