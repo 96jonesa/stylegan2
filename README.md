@@ -1,6 +1,6 @@
 ## Modifications (96jonesa)
 
-Added --snapshot-ticks command-line argument to run_training.py to control how often snapshots are saved during command-line training.
+Added --image-snapshot-ticks nad --network-snapshot-ticks command-line argumenst to run_training.py to control how often snapshots are saved during command-line training.
 
 ## StyleGAN2 &mdash; Official TensorFlow Implementation (Modified by 96jonesa)
 
