@@ -1,4 +1,4 @@
-## Modifications
+## Modifications (96jonesa)
 
 Added --snapshot-ticks command-line argument to control how often snapshots are saved during command-line training.
 
