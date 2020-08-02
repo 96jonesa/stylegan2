@@ -1,6 +1,8 @@
 ## Modifications (96jonesa)
 
-Added --image-snapshot-ticks and --network-snapshot-ticks command-line argumenst to run_training.py to control how often snapshots are saved during command-line training.
+Added --image-snapshot-ticks and --network-snapshot-ticks command-line arguments to run_training.py to control how often snapshots are saved during command-line training.
+
+Added --resume-pkl and --resume-kimg command-line arguments to run_training.py to allow resuming training from the command-line.
 
 ## StyleGAN2 &mdash; Official TensorFlow Implementation (Modified by 96jonesa)
 
