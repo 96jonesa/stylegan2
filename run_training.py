@@ -33,7 +33,7 @@ _valid_configs = [
 
 #----------------------------------------------------------------------------
 
-def run(dataset, data_dir, result_dir, config_id, num_gpus, total_kimg, gamma, mirror_augment, metrics):
+def run(dataset, data_dir, result_dir, config_id, num_gpus, total_kimg, gamma, mirror_augment, metrics, snapshot_ticks):
     train     = EasyDict(run_func_name='training.training_loop.training_loop') # Options for training loop.
     G         = EasyDict(func_name='training.networks_stylegan2.G_main')       # Options for generator network.
     D         = EasyDict(func_name='training.networks_stylegan2.D_stylegan2')  # Options for discriminator network.
@@ -49,7 +49,7 @@ def run(dataset, data_dir, result_dir, config_id, num_gpus, total_kimg, gamma, m
     train.data_dir = data_dir
     train.total_kimg = total_kimg
     train.mirror_augment = mirror_augment
-    train.image_snapshot_ticks = train.network_snapshot_ticks = 10
+    train.image_snapshot_ticks = train.network_snapshot_ticks = snapshot_ticks
     sched.G_lrate_base = sched.D_lrate_base = 0.002
     sched.minibatch_size_base = 32
     sched.minibatch_gpu_base = 4
@@ -168,6 +168,7 @@ def main():
     parser.add_argument('--gamma', help='R1 regularization weight (default is config dependent)', default=None, type=float)
     parser.add_argument('--mirror-augment', help='Mirror augment (default: %(default)s)', default=False, metavar='BOOL', type=_str_to_bool)
     parser.add_argument('--metrics', help='Comma-separated list of metrics or "none" (default: %(default)s)', default='fid50k', type=_parse_comma_sep)
+    parser.add_argument('--snapshot-ticks', help='How often to save snapshots (default: %(default)s)', metavar='SNAP', default=1, type=int)
 
     args = parser.parse_args()
 
