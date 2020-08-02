@@ -1,3 +1,7 @@
+## Modifications
+
+Added --snapshot-ticks command-line argument to control how often snapshots are saved during command-line training.
+
 ## StyleGAN2 &mdash; Official TensorFlow Implementation
 
 ![Teaser image](./docs/stylegan2-teaser-1024x256.png)
