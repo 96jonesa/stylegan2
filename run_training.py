@@ -33,7 +33,7 @@ _valid_configs = [
 
 #----------------------------------------------------------------------------
 
-def run(dataset, data_dir, result_dir, config_id, num_gpus, total_kimg, gamma, mirror_augment, metrics, image_snapshot_ticks, network_snapshot_ticks):
+def run(dataset, data_dir, result_dir, config_id, num_gpus, total_kimg, gamma, mirror_augment, metrics, image_snapshot_ticks, network_snapshot_ticks, resume_pkl):
     train     = EasyDict(run_func_name='training.training_loop.training_loop') # Options for training loop.
     G         = EasyDict(func_name='training.networks_stylegan2.G_main')       # Options for generator network.
     D         = EasyDict(func_name='training.networks_stylegan2.D_stylegan2')  # Options for discriminator network.
@@ -51,6 +51,7 @@ def run(dataset, data_dir, result_dir, config_id, num_gpus, total_kimg, gamma, m
     train.mirror_augment = mirror_augment
     train.image_snapshot_ticks = image_snapshot_ticks
     train.network_snapshot_ticks = network_snapshot_ticks
+    train.resume_pkl = resume_pkl
     sched.G_lrate_base = sched.D_lrate_base = 0.002
     sched.minibatch_size_base = 32
     sched.minibatch_gpu_base = 4
@@ -171,6 +172,7 @@ def main():
     parser.add_argument('--metrics', help='Comma-separated list of metrics or "none" (default: %(default)s)', default='fid50k', type=_parse_comma_sep)
     parser.add_argument('--image-snapshot-ticks', help='How often to save image snapshots (default: %(default)s)', metavar='IMGSNAP', default=1, type=int)
     parser.add_argument('--network-snapshot-ticks', help='How often to save network snapshots (default: %(default)s)', metavar='NETSNAP', default=1, type=int)
+    parser.add_argument('--resume-pkl', help='Network pkl to resume from (default: %(default)s)', metavar='RESPKL', default=None)
 
     args = parser.parse_args()
 
